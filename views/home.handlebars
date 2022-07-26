@@ -1,0 +1,38 @@
+<!--The content for the app's home view which will be rendered into the layout's {{{body}}} (see layout/main.handlebars)-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>POST-Redirect-GET</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    {{#if error}}
+      <div class="alert alert-danger">
+        <strong>{{error}}</strong>
+      </div>
+    {{/if}}
+
+    <div class="container">
+      <h1>POST-Redirect-GET example</h1>
+      <form action="/" method="POST"> 
+        <div class="form-group">
+          <label for="submission">Submission</label>
+          <p id="input-maxlength" aria-hidden="true">Input at most 10 characters.</p>
+          <input required 
+            type="text" 
+            class="form-control" 
+            id="submission" 
+            placeholder="Please enter a value" 
+            name="submission" 
+            aria-describedby="input-maxlength" 
+            {{!-- pattern="^(?!\s)[a-zA-Z0-9 ]{0,10}$"  --}}
+            {{!-- maxlength="10" --}}
+            value="{{ submission }}">
+        </div>
+        <button type="submit" class="btn btn-primary" aria-labelledby="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
